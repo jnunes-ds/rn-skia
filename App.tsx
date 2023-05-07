@@ -1,8 +1,18 @@
-import { Canvas, Fill, RoundedRect } from "@shopify/react-native-skia";
-import { StatusBar } from "expo-status-bar";
 import { Dimensions, StyleSheet, Text, View } from "react-native";
+import {
+  Canvas,
+  Fill,
+  Image,
+  RoundedRect,
+  useImage,
+} from "@shopify/react-native-skia";
+
+import CardInfo from "./CardInfo";
 
 export default function App() {
+  const nubankLogo = useImage(require("./assets/logos/logo_White.png"));
+  const { x, y, r, color, image } = CardInfo;
+
   const { width } = Dimensions.get("window");
 
   const cardWidth = width - 48;
@@ -15,11 +25,21 @@ export default function App() {
       <RoundedRect
         width={cardWidth}
         height={cardHeight}
-        x={24}
-        y={128}
-        r={8}
-        color="#9002D9"
-      ></RoundedRect>
+        x={x}
+        y={y}
+        r={r}
+        color={color}
+      />
+      {nubankLogo && (
+        <Image
+          image={nubankLogo}
+          fit="contain"
+          x={image.x}
+          y={image.y}
+          width={image.size}
+          height={image.size}
+        />
+      )}
     </Canvas>
   );
 }
