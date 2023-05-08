@@ -1,6 +1,7 @@
 import { Dimensions, StyleSheet } from "react-native";
 import {
   Canvas,
+  Circle,
   Fill,
   Group,
   Image,
@@ -55,7 +56,18 @@ export default function App() {
         />
       )}
 
-      <Group></Group>
+      <Group>
+        <Circle
+          c={{ x: width - 80, y: bottomLeft.y(cardHeight) - 10 }}
+          r={20}
+          color="#F10108"
+        />
+        <Circle
+          c={{ x: width - 56, y: bottomLeft.y(cardHeight) - 10 }}
+          r={20}
+          color="#FF9A01"
+        />
+      </Group>
     </Canvas>
   );
 }
