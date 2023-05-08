@@ -1,11 +1,13 @@
 import { Dimensions, StyleSheet } from "react-native";
 import {
+  BlurMask,
   Canvas,
   Circle,
   Fill,
   Group,
   Image,
   RoundedRect,
+  SweepGradient,
   Text,
   useFont,
   useImage,
@@ -35,7 +37,10 @@ export default function App() {
         y={y}
         r={r}
         color={color}
-      />
+      >
+        <SweepGradient c={{ x: 24, y: 128 }} colors={["#9002d9", "#600090"]} />
+        <BlurMask blur={60} style="inner" />
+      </RoundedRect>
       {nubankLogo && (
         <Image
           image={nubankLogo}
